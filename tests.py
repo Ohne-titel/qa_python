@@ -29,7 +29,7 @@ class TestBooksCollector:
     def test_add_new_book_length_name(self, name, expected_result):
         books_collector = BooksCollector()
         books_collector.add_new_book(name)
-        actual_result = books_collector.books_genre.get(name) is not None
+        actual_result = books_collector.get_book_genre(name) is not None
         assert actual_result == expected_result
 
     def test_add_book_added_book_has_no_genre(self):
