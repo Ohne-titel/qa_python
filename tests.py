@@ -53,6 +53,10 @@ class TestBooksCollector:
         books_collector.set_book_genre('Ночь в Люберцах', 'Ужасы')
         assert books_collector.get_books_with_specific_genre('Ужасы') == ['Ночь в Люберцах']
 
+    def test_get_books_genre(self):
+        books_collector = BooksCollector()
+        assert books_collector.get_books_genre() == {}
+
     def test_get_books_for_children(self):
         books_collector = BooksCollector()
         books_collector.add_new_book('Чик и Брики')
