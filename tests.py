@@ -71,6 +71,26 @@ class TestBooksCollector:
         books_collector.add_book_in_favorites('Гарри Поттер и принц полукровка')
         assert books_collector.get_list_of_favorites_books() == ['Гарри Поттер и принц полукровка']
 
+    def test_unable_delete_book_from_favorites_with_unknown_name(self):
+        books_collector = BooksCollector()
+        books_collector.add_new_book('Гарри Поттер и принц полукровка')
+        books_collector.add_book_in_favorites('Гарри Поттер и принц полукровка')
+        books_collector.delete_book_from_favorites('Уроки телекинеза')
+        assert len(books_collector.get_list_of_favorites_books()) == 1
+
+    def test_unable_add_book_in_favorites_with_unknown_name(self):
+        books_collector = BooksCollector()
+        books_collector.add_new_book('Гарри Поттер и принц полукровка')
+        books_collector.add_book_in_favorites('qweqwe')
+        assert len(books_collector.get_list_of_favorites_books()) == 0
+
+    def test_unable_add_book_in_favorites_with_repeat_name(self):
+        books_collector = BooksCollector()
+        books_collector.add_new_book('Гарри Поттер и принц полукровка')
+        books_collector.add_book_in_favorites('Гарри Поттер и принц полукровка')
+        books_collector.add_book_in_favorites('Гарри Поттер и принц полукровка')
+        assert len(books_collector.get_list_of_favorites_books()) == 1
+
     def test_get_list_of_favorites_books(self):
         books_collector = BooksCollector()
         books_collector.add_new_book('Гарри Поттер и принц полукровка')
